@@ -1,385 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👑 BILAL MD 👑</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00f3ff;
-            --secondary: #bc13fe;
-            --bg: #050505;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>👑 POPKID MD 👑</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--bg);
-            font-family: 'Rajdhani', sans-serif;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
+<style>
+:root{
+    --bg1:#0f1020;
+    --bg2:#1a1b2e;
+    --accent:#7aa2ff;
+    --accent2:#c77dff;
+    --soft:#9be7ff;
+    --danger:#ff7a7a;
+    --success:#7aff9a;
+    --glass:rgba(255,255,255,0.08);
+}
 
-        /* Background Grid Animation */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: 
-                linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            perspective: 1000px;
-            transform: translateY(0);
-            animation: gridMove 20s linear infinite;
-            z-index: -1;
-            opacity: 0.3;
-        }
+*{box-sizing:border-box;margin:0;padding:0}
 
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 400px; }
-        }
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+    color:#fff;
+    overflow:hidden;
+}
 
-        .container {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            padding: 3rem;
-            border-radius: 0px;
-            width: 90%;
-            max-width: 450px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
-            position: relative;
-            clip-path: polygon(
-                10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%
-            );
-        }
+/* soft floating blobs */
+body::before, body::after{
+    content:"";
+    position:absolute;
+    width:300px;height:300px;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.4;
+    z-index:-1;
+}
+body::before{background:var(--accent); top:10%; left:5%;}
+body::after{background:var(--accent2); bottom:10%; right:5%;}
 
-        /* Corner Decorations */
-        .corner {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            transition: 0.3s;
-        }
-        .tl { top: 0; left: 0; border-right: none; border-bottom: none; }
-        .tr { top: 0; right: 0; border-left: none; border-bottom: none; }
-        .bl { bottom: 0; left: 0; border-right: none; border-top: none; }
-        .br { bottom: 0; right: 0; border-left: none; border-top: none; }
+.card{
+    width:90%;
+    max-width:400px;
+    background:var(--glass);
+    backdrop-filter:blur(14px);
+    border-radius:22px;
+    padding:28px 22px;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.15);
+    position:relative;
+}
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            position: relative;
-        }
+h1{
+    font-size:1.9rem;
+    font-weight:700;
+    margin-bottom:6px;
+    background:linear-gradient(90deg,var(--soft),var(--accent2));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-        .status-line {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.status{
+    font-size:.8rem;
+    letter-spacing:1px;
+    color:#cfd3ff;
+    margin-bottom:22px;
+}
 
-        .input-group {
-            position: relative;
-            margin-bottom: 25px;
-        }
+.input-wrap{
+    background:rgba(255,255,255,0.06);
+    border-radius:14px;
+    padding:2px;
+    margin-bottom:16px;
+}
 
-        input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #333;
-            border-bottom: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 15px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-        }
+input{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:14px;
+    border-radius:12px;
+    background:rgba(0,0,0,0.4);
+    color:#fff;
+    text-align:center;
+    font-size:1rem;
+}
 
-        input:focus {
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
-            background: rgba(0, 243, 255, 0.05);
-        }
+input::placeholder{
+    color:rgba(255,255,255,0.5);
+}
 
-        input::placeholder {
-            color: rgba(0, 243, 255, 0.3);
-            font-size: 1rem;
-        }
+button{
+    width:100%;
+    border:none;
+    border-radius:14px;
+    padding:14px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    color:#000;
+    transition:.3s;
+}
 
-        button {
-            width: 100%;
-            padding: 15px;
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-        }
+button:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 20px rgba(124,162,255,.4);
+}
 
-        button::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            transition: 0.3s;
-            z-index: -1;
-        }
+#result{
+    margin-top:20px;
+    min-height:60px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    text-align:center;
+}
 
-        button:hover {
-            color: #000;
-            box-shadow: 0 0 20px var(--primary);
-        }
+.code-display{
+    padding:10px 18px;
+    border-radius:12px;
+    border:1px dashed var(--soft);
+    color:var(--soft);
+    font-weight:600;
+    letter-spacing:4px;
+    cursor:pointer;
+    transition:.2s;
+    position:relative;
+}
 
-        button:hover::before {
-            left: 0;
-        }
+.code-display:hover{
+    background:rgba(155,231,255,0.1);
+}
 
-        #result {
-            margin-top: 30px;
-            min-height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+.code-display::after{
+    content:"TAP TO COPY";
+    display:block;
+    font-size:.65rem;
+    opacity:.6;
+    margin-top:6px;
+    letter-spacing:1px;
+}
 
-        .code-display {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            color: var(--secondary);
-            text-shadow: 0 0 15px var(--secondary);
-            letter-spacing: 5px;
-            border: 1px dashed var(--secondary);
-            padding: 10px 20px;
-            margin-top: 10px;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .code-display:active {
-            transform: scale(0.98);
-        }
+.loader{
+    width:28px;
+    height:28px;
+    border:3px solid rgba(255,255,255,0.2);
+    border-top:3px solid var(--soft);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
 
-        .code-display::after {
-            content: 'CLICK TO COPY';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.6rem;
-            color: #fff;
-            font-family: 'Rajdhani', sans-serif;
-            opacity: 0.7;
-        }
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
 
-        .loader {
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        footer {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.3);
-        }
-
-    </style>
+footer{
+    margin-top:18px;
+    font-size:.7rem;
+    color:rgba(255,255,255,0.5);
+    letter-spacing:1px;
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Corner Decorations -->
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
+<div class="card">
+    <h1>POPKID MD</h1>
+    <div class="status">👑 SYSTEM IS ACTIVE 👑</div>
 
-<div class="container" style="
-    position: relative;
-    padding: 3px; /* Mobile par patli RGB line achi lagti hai */
-    background: linear-gradient(90deg, #ff0000, #00ff00, #00ffff, #ff00ff, #ff0000);
-    background-size: 200% 200%;
-    animation: rgbMove 3s linear infinite;
-    border-radius: 15px;
-    max-width: 350px; /* Phone width ke liye perfect */
-    width: 90%;
-    margin: 20px auto;
-">
-    <div style="background: #050505; padding: 20px; border-radius: 12px; text-align: center;">
-        
-        <h1 style="font-family: 'Orbitron'; font-size: 1.8rem; color: #fff; text-shadow: 0 0 10px #00f3ff; font-weight: 900; margin-bottom: 8px;">BILAL MD</h1>
-        
-        <div class="status-line" style="font-weight: 800; font-size: 0.9rem; margin-bottom: 20px; letter-spacing: 1px;">
-            👑 SYSTEM IS <span style="color:#00f3ff;">ACTIVE 👑</span>
-        </div>
-
-        <div style="position: relative; padding: 2px; background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff); background-size: 200%; animation: rgbMove 2s linear infinite; border-radius: 10px; margin-bottom: 20px;">
-            <input type="text" id="number" placeholder="+923078071982" autocomplete="off" style="
-                width: 100%;
-                padding: 15px;
-                background: #000;
-                border: none;
-                color: #00f3ff;
-                font-family: 'Orbitron';
-                font-size: 1rem; /* Phone ke liye fit size */
-                font-weight: bold;
-                text-align: center;
-                border-radius: 8px;
-                outline: none;
-            ">
-        </div>
-
-        <div style="position: relative; padding: 2px; background: linear-gradient(90deg, #ff0000, #ff00ff, #00ffff, #ff0000); background-size: 200%; animation: rgbMove 1.5s linear infinite; border-radius: 10px;">
-            <button onclick="getCode()" style="
-                width: 100%;
-                padding: 15px;
-                background: #000;
-                color: #fff;
-                border: none;
-                font-family: 'Orbitron';
-                font-size: 1.2rem;
-                font-weight: 900;
-                cursor: pointer;
-                border-radius: 8px;
-                text-transform: uppercase;
-            ">
-                ♥️ DONE ♥️
-            </button>
-        </div>
-
-        <div id="result" style="margin-top: 20px; font-weight: 900; font-size: 1.4rem; color: #bc13fe;"></div>
-
-        <footer style="margin-top: 20px; font-weight: 800; color: #fff; font-size: 0.75rem; opacity: 0.7; letter-spacing: 1px;">
-            👑 BILAL MD WHATSAPP BOT 👑
-        </footer>
+    <div class="input-wrap">
+        <input type="text" id="number" placeholder="+923078071982" autocomplete="off">
     </div>
+
+    <button onclick="getCode()">✨ GET CODE ✨</button>
+
+    <div id="result"></div>
+
+    <footer>⚠️ POPKID MD WHATSAPP BOT ⚠️</footer>
 </div>
 
-<style>
-    @keyframes rgbMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+<script>
+async function getCode() {
+    const numberInput = document.getElementById("number");
+    const resDiv = document.getElementById("result");
+    const num = numberInput.value.replace(/[^0-9]/g, '');
+
+    if (!num) {
+        playSound('error');
+        resDiv.innerHTML = "<span style='color:var(--danger)'>Please enter a number 😊</span>";
+        return;
     }
-    body { 
-        background: #000; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        min-height: 100vh; 
-        margin: 0;
-        font-family: 'Rajdhani', sans-serif; 
+
+    resDiv.innerHTML = '<div class="loader"></div><span style="font-size:.8rem;opacity:.7">Connecting... 😃</span>';
+
+    try {
+        const req = await fetch(`/code?number=${num}`);
+        const data = await req.json();
+
+        if (data.code) {
+            resDiv.innerHTML = `
+                <div style="font-size:.75rem;opacity:.7">PAIRING CODE</div>
+                <div class="code-display" onclick="copyCode('${data.code}')">${data.code}</div>
+            `;
+            playSound('success');
+        } else if (data.status === 'already_connected') {
+            resDiv.innerHTML = "<span style='color:var(--success)'>A mini bot is already connected to this number 🥺 Please enter another number 🙂</span>";
+        } else {
+            resDiv.innerHTML = "<span style='color:var(--danger)'>[ERROR] CONNECTION FAILED</span>";
+        }
+    } catch (e) {
+        resDiv.innerHTML = "<span style='color:var(--danger)'>[CRITICAL] SERVER UNREACHABLE</span>";
     }
-</style>
+}
 
-<style>
-    @keyframes rgbMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    :root { --primary: #00f3ff; }
-    body { background: #000; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Rajdhani', sans-serif; }
-</style>
+function copyCode(code) {
+    navigator.clipboard.writeText(code);
+    const display = document.querySelector('.code-display');
+    const originalText = display.innerText;
 
+    display.innerText = "COPIED 😊";
+    display.style.borderColor = "var(--success)";
+    display.style.color = "var(--success)";
 
-    <script>
-        async function getCode() {
-            const numberInput = document.getElementById("number");
-            const resDiv = document.getElementById("result");
-            const num = numberInput.value.replace(/[^0-9]/g, '');
+    setTimeout(() => {
+        display.innerText = originalText;
+        display.style.borderColor = "var(--soft)";
+        display.style.color = "var(--soft)";
+    }, 1500);
+}
 
-            if (!num) {
-                playSound('error');
-                resDiv.innerHTML = "<span style='color:#ff0055; text-shadow:0 0 10px #ff0055'>DUBARA KOSHISH KARO 😊</span>";
-                numberInput.style.borderColor = "#ff0055";
-                return;
-            }
+// Optional: Simple placeholder sound function
+function playSound(type) {
+    // You can add real sounds here later if you want
+}
+</script>
 
-            // Reset styling
-            numberInput.style.borderColor = "#00f3ff";
-            resDiv.innerHTML = '<div class="loader"></div><span style="margin-top:10px; font-size:0.8rem; letter-spacing:2px">CONNECTING...😃</span>';
-
-            try {
-                const req = await fetch(`/code?number=${num}`);
-                const data = await req.json();
-
-                if (data.code) {
-                    resDiv.innerHTML = `
-                        <div style="font-size:0.8rem; color:#aaa">PAIRING CODE:</div>
-                        <div class="code-display" onclick="copyCode('${data.code}')">${data.code}</div>
-                    `;
-                    playSound('success');
-                } else if (data.status === 'already_connected') {
-                    resDiv.innerHTML = "<span style='color:#0f0; text-shadow:0 0 10px #0f0'>IS NUMBER PER PEHLE SE MINI BOT CONNECT HAI 🥺 KOI OR NUMBER LIKHO 🙂</span>";
-                } else {
-                    resDiv.innerHTML = "<span style='color:#ff0055'>[ERROR] CONNECTION FAILED</span>";
-                }
-            } catch (e) {
-                resDiv.innerHTML = "<span style='color:#ff0055'>[CRITICAL] SERVER UNREACHABLE</span>";
-            }
-        }
-
-        function copyCode(code) {
-            navigator.clipboard.writeText(code);
-            const display = document.querySelector('.code-display');
-            const originalText = display.innerText;
-            
-            display.innerText = "CODE COPY HO GAYA HAI 😊";
-            display.style.borderColor = "#0f0";
-            display.style.color = "#0f0";
-            
-            setTimeout(() => {
-                display.innerText = originalText;
-                display.style.borderColor = "var(--secondary)";
-                display.style.color = "var(--secondary)";
-            }, 1500);
-        }
-
-        // Optional: Simple placeholder sound function
-        function playSound(type) {
-            // Sound effects logic could go here
-        }
-    </script>
 </body>
-    </html>
+</html>
